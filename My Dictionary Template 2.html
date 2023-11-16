@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Example</title>
+    <style>
+      table, th, td {
+        border: 0px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      
+      th {
+        background-color: #e6e6e6;
+      }
+      
+      .adj {
+        font-style: italic;
+        color: red;
+        font-size: smaller;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="search-input">Search for:</label>
+      <input type="text" id="search-input" name="search-input">
+      <button type="submit">Search</button>
+      <button type="button" id="random-word-button">Random word</button>
+    </form>
+    
+    <div id="search-results" style="display: none;"></div>
+    
+    <script>
+      const words = [
+        { word: 'cow', meaning1: 'M1; for skin', adj: '', meaning2: 'M2; for income' },
+        { word: 'pig', meaning1: 'M1; for meat', adj: 'Adj; farm animal', meaning2: 'M2; for agriculture' },
+        { word: 'chicken', meaning1: 'M1; for meat and eggs', adj: 'Adj; domestic bird', meaning2: 'M2; for poultry farming' }
+      ];
+      
+      const form = document.querySelector('form');
+      const searchInput = document.querySelector('#search-input');
+      const searchResults = document.querySelector('#search-results');
+      const randomWordButton = document.querySelector('#random-word-button');
+      
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = searchInput.value.toLowerCase();
+        let result;
+        const word = words.find(word => word.word === query);
+        if (word) {
+          result = `
+            <table>
+              <tr>
+                <th>${word.word}</th>
+                <th>${word.adj}</th>
+                <th>Button</th>
+              </tr>
+              <tr>
+                <td>${word.meaning1}</td>
+                <td class="adj">${word.adj}</td>
+                <td><button onclick="speak('${word.meaning1}')">Speak</button></td>
+              </tr>
+              <tr>
+                <td>${word.meaning2}</td>
+                <td class="adj">${word.adj}</td>
+                <td><button onclick="speak('${word.meaning2}')">Speak</button></td>
+              </tr>
+            </table>
+          `;
+          searchResults.innerHTML = result;
+        } else {
+          result = 'No results found';
+          searchResults.innerHTML = result;
+        }
+        searchResults.style.display = 'block';
+      });
+      
+      randomWordButton.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        const randomWord = words[randomIndex].word;
+        searchInput.value = randomWord;
+        form.dispatchEvent(new Event('submit'));
+      });
+      
+      function speak(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+      }
+      
+      searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  if (query.length === 1 && query !== ' ') {
+    const matches = words.filter(word => word.word.startsWith(query)).slice(0, 5);
+    const matchList = matches.map(match => `<li>${match.word}</li>`).join('');
+    if (matchList) {
+      searchResults.style.display = 'block';
+      searchResults.innerHTML = `<ul>${matchList}</ul>`;
+      const listItems = searchResults.querySelectorAll('li');
+      listItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const word = words.find(word => word.word === item.textContent);
+          const result = `
+            <table>
+              <tr>
+                <th>${word.word}</th>
+                <th>${word.adj}</th>
+                <th>Button</th>
+              </tr>
+              <tr>
+                <td>${word.meaning1}</td>
+                <td class="adj">${word.adj}</td>
+                <td><button onclick="speak('${word.meaning1}')">Speak</button></td>
+              </tr>
+              <tr>
+                <td>${word.meaning2}</td>
+                <td class="adj">${word.adj}</td>
+                <td><button onclick="speak('${word.meaning2}')">Speak</button></td>
+              </tr>
+            </table>
+          `;
+          searchInput.value = item.textContent;
+          searchResults.innerHTML = result;
+          searchResults.style.display = 'block';
+        });
+      });
+    } else {
+      searchResults.style.display = 'none';
+      searchResults.innerHTML = '';
+    }
+  } else {
+    searchResults.style.display = 'none';
+    searchResults.innerHTML = '';
+  }
+});
+
+const randomButton = document.createElement('button');
+randomButton.textContent = 'Random word';
+randomButton.addEventListener('click', () => {
+  const randomWord = words[Math.floor(Math.random() * words.length)];
+  const result = `
+    <table>
+      <tr>
+        <th>${randomWord.word}</th>
+        <th>${randomWord.adj}</th>
+        <th>Button</th>
+      </tr>
+      <tr>
+        <td>${randomWord.meaning1}</td>
+        <td class="adj">${randomWord.adj}</td>
+        <td><button onclick="speak('${randomWord.meaning1}')">Speak</button></td>
+      </tr>
+      <tr>
+        <td>${randomWord.meaning2}</td>
+        <td class="adj">${randomWord.adj}</td>
+        <td><button onclick="speak('${randomWord.meaning2}')">Speak</button></td>
+      </tr>
+    </table>
+  `;
+  searchInput.value = randomWord.word;
+  searchResults.innerHTML = result;
+  searchResults.style.display = 'block';
+});
+
+</script>

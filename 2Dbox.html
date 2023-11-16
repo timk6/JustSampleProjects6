@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3D Box with Timeline</title>
+  <style>
+    .box-container {
+      perspective: 800px;
+      width: 200px;
+      height: 200px;
+      margin: 100px auto;
+    }
+    .box {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      animation: play-animation 8s infinite linear;
+    }
+    .side {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: rgba(255, 255, 255, 0.8);
+      opacity: 0.8;
+      border: 1px solid black;
+    }
+    .front { transform: translateZ(100px); background-color: #FF5733; }
+    .back { transform: translateZ(-100px) rotateY(180deg); background-color: #33FF57; }
+    .left { transform: translateX(-100px) rotateY(-90deg); background-color: #5733FF; }
+    .right { transform: translateX(100px) rotateY(90deg); background-color: #FF5733; }
+    .top { transform: translateY(-100px) rotateX(90deg); background-color: #57FF33; }
+    .bottom { transform: translateY(100px) rotateX(-90deg); background-color: #3357FF; }
+
+    /* Additional styles for sliders and buttons */
+    .slider-container {
+      width: 200px;
+      margin: 0 auto;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .button-container button {
+      margin: 0 5px;
+    }
+
+    /* Timeline styles */
+    .timeline {
+      width: 100%;
+      height: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-top: 20px;
+      position: relative;
+    }
+    .timeline-marker {
+      position: absolute;
+      top: 2px;
+      height: 16px;
+      background-color: green;
+      border-radius: 8px;
+      transition: width 0.5s;
+    }
+	
+	* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.drop-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#board {
+  background: #fff;
+  border-radius: 5px;
+}
+
+.board-container {
+    height: 75%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#source {
+  display: none;
+}
+
+#controls {
+    background: lightsteelblue;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(8, 1fr);
+    width: 800px;
+    height: auto;
+    margin-top: 5px;
+    border-radius: 10px;
+    grid-template-areas: 
+    "blue black green red current current eraser clear"
+    "yellow orange pink brown line line download download";
+}
+
+.round-button {
+    padding:1em;
+    cursor: pointer;
+    margin: 5px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    border-radius: 50%;
+    text-align:center;
+    text-decoration:none;
+    box-shadow: 0 0 3px gray;
+}
+
+.round-button:active {
+    box-shadow: 0 5px rgb(133, 132, 132);
+    transform: translateX(2px);
+}
+
+.square-button{
+    border-radius: 4px;
+    margin: 2px;
+    padding: 3px;
+    font-size: auto;
+    text-align: center;
+    justify-content:center;
+    align-content: center;
+    cursor: pointer;
+    height: 50%;
+}
+
+.square-button:active {
+    box-shadow: 0 5px #fff;
+    transform: translateX(2px);
+}
+  </style>
+</head>
+<body>
+  <div class="box-container">
+    <div class="box">
+      
+	  <div class="board-container">
+        <canvas id="board" class="drop-shadow"></canvas>
+    </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+    </div>
+  </div>
+
+  <!-- Sliders to control translation -->
+  <div class="slider-container">
+    <label for="east">East:</label>
+    <input type="range" id="east" min="-180" max="180" value="0">
+    <label for="west">West:</label>
+    <input type="range" id="west" min="-180" max="180" value="0">
+    <label for="north">North:</label>
+    <input type="range" id="north" min="-180" max="180" value="0">
+    <label for="south">South:</label>
+    <input type="range" id="south" min="-180" max="180" value="0">
+  </div>
+
+  <!-- Button to insert keyframe -->
+  <div class="button-container">
+    <button id="insert-keyframe">Insert Keyframe</button>
+    <button id="play-animation">Play</button>
+    <button id="reset-position">Reset</button>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline" id="timeline">
+    <div class="timeline-marker" id="timelineMarker"></div>
+  </div>
+
+  <script>
+    const box = document.querySelector('.box');
+    const eastSlider = document.getElementById('east');
+    const westSlider = document.getElementById('west');
+    const northSlider = document.getElementById('north');
+    const southSlider = document.getElementById('south');
+    const insertKeyframeButton = document.getElementById('insert-keyframe');
+    const playAnimationButton = document.getElementById('play-animation');
+    const resetPositionButton = document.getElementById('reset-position');
+    const timeline = document.getElementById('timeline');
+    const timelineMarker = document.getElementById('timelineMarker');
+    const keyframes = [];
+
+    function updateBoxTransform() {
+      const east = eastSlider.value;
+      const west = westSlider.value;
+      const north = northSlider.value;
+      const south = southSlider.value;
+
+      box.style.transform = `rotateY(${east - west}deg) rotateX(${north - south}deg)`;
+    }
+
+    function insertKeyframe() {
+      const east = eastSlider.value;
+      const west = westSlider.value;
+      const north = northSlider.value;
+      const south = southSlider.value;
+
+      keyframes.push({
+        east: east,
+        west: west,
+        north: north,
+        south: south
+      });
+
+      console.log('Keyframe inserted:', keyframes);
+
+      updateTimeline();
+    }
+
+    function updateTimeline() {
+      const percent = (keyframes.length - 1) / keyframes.length * 100;
+      timelineMarker.style.width = `${percent}%`;
+    }
+
+    function playAnimation() {
+      if (keyframes.length === 0) {
+        console.log('No keyframes to play.');
+        return;
+      }
+
+      box.style.animation = 'none';
+      box.offsetHeight; // Trigger reflow to restart the animation
+
+      const duration = keyframes.length * 1; // Each keyframe will play for 1s
+      const animationName = `play-animation-${Date.now()}`;
+
+      const animationKeyframes = keyframes.map((keyframe, index) => {
+        const { east, west, north, south } = keyframe;
+        const translateX = east - west;
+        const translateY = north - south;
+
+        return {
+          transform: `rotateY(${translateX}deg) rotateX(${translateY}deg)`,
+          offset: (index + 1) / keyframes.length
+        };
+      });
+
+      const animationTiming = {
+        duration: duration * 1000,
+        iterations: 1
+      };
+
+      const keyframeAnimation = box.animate(animationKeyframes, animationTiming);
+      keyframeAnimation.onfinish = () => {
+        box.style.animation = '';
+        console.log('Animation completed.');
+      };
+
+      box.style.animation = `${animationName} ${duration}s infinite linear`;
+      console.log('Animation started:', keyframes);
+    }
+
+    function resetPosition() {
+      keyframes.length = 0;
+      timelineMarker.style.width = '0';
+      box.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      console.log('Position reset.');
+    }
+
+        // Event listeners for slider changes
+    eastSlider.addEventListener('input', updateBoxTransform);
+    westSlider.addEventListener('input', updateBoxTransform);
+    northSlider.addEventListener('input', updateBoxTransform);
+    southSlider.addEventListener('input', updateBoxTransform);
+
+    // Event listeners for buttons
+    insertKeyframeButton.addEventListener('click', insertKeyframe);
+    playAnimationButton.addEventListener('click', playAnimation);
+    resetPositionButton.addEventListener('click', resetPosition);
+
+    // Initial update
+    updateBoxTransform();
+  </script>
+</body>
+</html>

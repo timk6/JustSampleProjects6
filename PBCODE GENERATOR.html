@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PBCODE GENERATOR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        table {
+            width: 70%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .enter-column {
+            background-color: #f8f8f8;
+            width: 20%;
+            text-align: center;
+        }
+
+        #result {
+            width: 70%;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        #copyButton {
+            float: center;
+        }
+    </style>
+	
+    <script>
+        function captureData() {
+            var enter1 = document.getElementById("enter1").value.trim();
+            var enter2 = document.getElementById("enter2").value.trim();
+            var enter3 = document.getElementById("enter3").value.trim();
+            var enter4 = document.getElementById("enter4").value.trim();			
+			var enter5 = document.getElementById("enter5").value.trim();
+            var enter6 = document.getElementById("enter6").value.trim();
+            var hiddenCode1 = "";
+            var hiddenCode2 = "";
+			var hiddenCode3 = "";
+            var hiddenCode4 = "";
+            var hiddenCode5 = "";
+            var hiddenCode6 = "";
+
+
+            var data = [];     
+			
+			var item141 =";------------------------------------------------------------------------" ;data.push(item141);
+			var item142 =";------------------------------------------------------------------------" ;data.push(item141);
+			var item143 =";------------------------------------------------------------------------" ;data.push(item143);
+			var item144 =";------------------------------------------------------------------------" ;data.push(item144);
+			
+			var item12 =";Name:                           " ;data.push(item12);
+		    var item13 =";Description:                     " ;data.push(item13);		
+			var item12 =";Author:" ;data.push(item12);
+		    var item13 =";Date: " ;data.push(item13);		
+			var item12 =";Version:" ;data.push(item12);
+		    var item13 =";PB-Version:" ;data.push(item13);		
+			var item12 =";OS:" ;data.push(item12);
+		    var item13 =";Credit:" ;data.push(item13);		
+			var item12 =";Forum:" ;data.push(item12);
+		    var item13 =";Created by: PBCODE GENERATOR" ;data.push(item13);		
+					
+			var item14 ="" ;data.push(item14);
+			var item14 ="" ;data.push(item14);			
+									
+			var item11 ="EnableExplicit" ;data.push(item11);
+			var item10 ="Enumeration Window" ;data.push(item10);
+			var item10 ="#" + enter1 ;data.push(item10);
+			var item10 ="EndEnumeration" ;data.push(item10);
+			
+			
+			var item14 ="" ;data.push(item14);
+			var item14 ="" ;data.push(item14);	
+
+			
+	        var item7 ="Define iEvent.i" ;data.push(item7);
+            var item8 ="Declare Open_"+enter1+"(X="+enter2+","+"Y="+enter3+","+ "Width="+enter4+","+"Height="+enter5+")";data.push(item8);
+			
+			var item14 ="" ;data.push(item14);
+			var item14 ="" ;data.push(item14);	
+			
+			if (enter6 !== "") {	
+			var item7 ="Procedure ChangeWindowColor("+enter1+", rgb)" ;data.push(item7);
+			var item7 ="SetWindowColor("+enter1+", rgb)" ;data.push(item7);
+			var item7 ="EndProcedure" ;data.push(item7);}
+			
+			var item14 ="" ;data.push(item14);
+			var item14 ="" ;data.push(item14);	
+			
+			var item8 ="Procedure Open_" + enter1 + "(X =" +enter2+ ",Y =" + enter3 + ",Width ="+enter4 + ", Height =" + enter5 + ")" +";-------- window properties" ;data.push(item8);
+			var item8 ="If OpenWindow(#"+enter1+", X, Y, Width, Height,"+"\""+enter1+"\"" + "," + "#PB_Window_SystemMenu | #PB_Window_ScreenCentered | #PB_Window_SizeGadget)";data.push(item8);
+            if (enter6 !== "") {	
+			var item7 ="ChangeWindowColor(#"+enter1+", RGB(" + enter6 + " ))" ;data.push(item7);	  }
+			var item7 ="EndIf" ;data.push(item7);
+			var item7 ="EndProcedure" ;data.push(item7);
+			
+			
+		    var item14 ="" ;data.push(item14);
+			var item14 ="" ;data.push(item14);	
+			
+			var item14 =";CHECK OUT the difference when you replace window properties in the code with" ;data.push(item14);
+			var item14 =";#PB_Window_SystemMenu | #PB_Window_MinimizeGadget | #PB_Window_MaximizeGadget | #PB_Window_Maximize)" ;data.push(item14);
+			var item14 ="" ;data.push(item14);
+			var item14 ="" ;data.push(item14);
+			
+			var item7 ="Open_"+enter1+"()" ;data.push(item7);
+
+			var item14 =";------------------------------------------------------------------------" ;data.push(item14);
+			var item14 =";------------------------------------------------------------------------" ;data.push(item14);
+
+            var item7 ="Repeat" ;data.push(item7);
+            var item7 ="iEvent = WaitWindowEvent()" ;data.push(item7);
+            var item1 ="Select iEvent" ;data.push(item1);
+             var item1 ="Case #PB_Event_CloseWindow" ;data.push(item1);
+             var item1 ="End" ;data.push(item1);
+            var item1 ="EndSelect" ;data.push(item1);
+			var item1 ="ForEver" ;data.push(item1);
+  
+  
+  
+            var result = document.getElementById("result");
+            result.value = data.join("\n");
+			
+			// Adjust textarea size based on number of lines
+            var lines = result.value.split("\n").length;
+            result.rows = lines;
+        }
+
+        function copyText() {
+            var result = document.getElementById("result");
+            result.select();
+            document.execCommand("copy");
+
+            // Update the button text
+            var copyButton = document.getElementById("copyButton");
+            copyButton.textContent = "Copied!";
+            setTimeout(function() {
+                copyButton.textContent = "Copy";
+            }, 2000);
+        }
+		function captureAgain() {
+            // Capture the entered data again
+            captureData();
+        }
+    </script>
+	
+</head>
+<body>
+    <h1>PBCODE GENERATOR</h1>
+    <table>
+        <tr>
+            <th>Tool Box</th>
+            <th>Properties</th>
+            <th class="enter-column"><big><big><span style="color: rgb(0, 0, 153); font-weight: bold;">Enter</span></big></big</th>
+        </tr>
+		
+        <tr>
+            <td><big><big><span style="color: rgb(0, 0, 153); font-weight: bold;">Window<sup>&#10033</sup></span></big></big><br> </td>
+            <td>Name </td>
+			
+            <td class="enter-column"><input type="text" id="enter1"></td>
+        </tr>
+		
+		
+        <tr>
+            <td>X<sup>&#10033</su</td>
+            <td>eg 0 </td>
+            <td class="enter-column"><input type="text" id="enter2"></td>
+        </tr>
+		
+		 <tr>
+            <td>Y<sup>&#10033</su</td>
+            <td>eg 0 </td>
+            <td class="enter-column"><input type="text" id="enter3"></td>
+        </tr>
+		
+		 <tr>
+            <td>Width<sup>&#10033</su</td>
+            <td>eg 600 </td>
+            <td class="enter-column"><input type="text" id="enter4"></td>
+        </tr>
+		
+		 <tr>
+            <td>Height<sup>&#10033</su</td>
+            <td>eg 400 </td>
+            <td class="enter-column"><input type="text" id="enter5"></td>
+        </tr>
+		
+		<tr>
+            <td>Color</td>
+            <td> Optional eg 176,176,176 </td>
+            <td class="enter-column"><input type="text" id="enter6"></td>
+        </tr>
+		
+	
+		
+    </table>
+	
+	<button style="background-color: lightblue; font-weight: bold; color: black;" id="copyButton" onclick="copyText()">Copy</button>
+	
+    <button style="background-color: lightblue; font-weight: bold; color: black;" onclick="captureAgain()">Generate Code</button>
+	
+	
+    <div>
+        <textarea hhhhhhh id="result" ></textarea>
+       
+        
+    </div>
+</body>
+</html>

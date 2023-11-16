@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number to Alphabet Converter</title>
+    <style>
+      body {
+        
+        text-align: center;
+        font-size: 24px;
+      }
+      input {
+        padding: 10px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Number to Alphabet Converter</h1>
+    <p>Enter a number:</p>
+    <p></p>
+    <input type="text" id="inputNumber" onkeyup="convertInput()" />
+    <p id="outputText"></p>
+    <p id="romanNumerals"></p>
+    
+    <script>
+      function convertInput() {
+  const input = document.getElementById("inputNumber").value.toLowerCase();
+  let output = "";
+  let romanNumerals = "";
+  let prevChar = "";
+  for (let i = 0; i < input.length; i++) {
+    let currentChar = input[i];
+    if (currentChar === " ") {
+      output += "#";
+      prevChar = " ";
+    } else if (currentChar === "0") {
+      output += "@";
+      prevChar = "&";
+      romanNumerals += "Kt";
+    } else if (!isNaN(parseInt(currentChar))) {
+      const alphabetIndex = parseInt(currentChar) - 1;
+      const alphabetChar = String.fromCharCode(97 + alphabetIndex);
+      output += alphabetChar;
+      prevChar = alphabetChar;
+      romanNumerals += convertToRomanNumerals(parseInt(currentChar)) + " ";
+    } else if (currentChar.match(/[a-z]/i)) {
+      const digit = currentChar.charCodeAt(0) - 96;
+      output += digit;
+      prevChar = currentChar;
+      romanNumerals += convertToRomanNumerals(digit) + "#";
+    } else {
+      output += currentChar;
+      prevChar = currentChar;
+    }
+  }
+  document.getElementById("outputText").innerHTML = output;
+  document.getElementById("romanNumerals").innerHTML = "Roman numerals: " + romanNumerals;
+  
+  document.getElementById("outputText").innerHTML = output  + romanNumerals;
+}
+
+
+      function convertToRomanNumerals(num) {
+        const romanNumerals = {
+          M: 1000,
+          CM: 900,
+          D: 500,
+          CD: 400,
+          C: 100,
+          XC: 90,
+          L: 50,
+          XL: 40,
+          X: 10,
+          IX: 9,
+          V: 5,
+          IV: 4,
+          I: 1
+        };
+        let result = "";
+        for (let key in romanNumerals) {
+          while (num >= romanNumerals[key]) {
+            result += key;
+            num -= romanNumerals[key];
+          }
+        }
+        return result;
+      }
+    </script>
+  </body>
+</html>

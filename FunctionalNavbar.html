@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <style>
+        /* Style for the navigation bar */
+        nav {
+            background-color: #333;
+            height: 100%;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 200px;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 18px;
+            transform: translateX(-200px); /* Start off hidden */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            padding: 10px 0;
+            border-bottom: 1px solid #fff;
+        }
+
+        nav li:last-child {
+            border-bottom: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #00FF00;
+        }
+
+        /* Style for the main content area */
+        main {
+            margin-left: 200px;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        /* Style for the side bar icon */
+        #sidebar-icon {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* Show the navigation bar when the icon is hovered over */
+        #sidebar-icon:hover + nav {
+            transform: translateX(0);
+        }
+
+        /* Keep the navigation bar visible when the mouse is over it */
+        nav:hover {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <label for="sidebar-icon" id="sidebar-icon">&#9776;</label>
+    <nav>
+        <ul>
+            <li><a href="#"></a></li>
+			 <li><a href="#">Random Word</a></li>
+            <li><a href="#">Go Pro</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Subscribe</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1></h1>
+        
+    </main>
+    <script>
+        // Get the sidebar icon element
+        const sidebarIcon = document.querySelector('#sidebar-icon');
+
+        // Get the navigation bar element
+        const nav = document.querySelector('nav');
+
+        // Show the navigation bar when the sidebar icon is hovered over
+        sidebarIcon.addEventListener('mouseenter', function() {
+            nav.style.transform = 'translateX(0)';
+        });
+
+        // Hide the navigation bar when the mouse leaves the sidebar icon
+        sidebarIcon.addEventListener('mouseleave', function() {
+            nav.style.transform = 'translateX(-200px)';
+        });
+
+        // Keep the navigation bar visible when the mouse is over it
+        nav.addEventListener('mouseenter', function() {
+            nav.style.transform = 'translateX(0)';
+        });
+
+        // Hide the navigation bar only if the mouse is not over the sidebar icon or the navigation bar
+const hideNav = function(event) {
+if (!event.relatedTarget || !event.relatedTarget.matches('#sidebar-icon, nav')) {
+nav.style.transform = 'translateX(-200px)';
+}
+};
+    // Hide the navigation bar when the mouse leaves it, but only if it is not moving to the sidebar icon or the navigation bar
+    nav.addEventListener('mouseleave', hideNav);
+
+    // Also hide the navigation bar when the mouse leaves the sidebar icon, but only if it is not moving to the navigation bar
+    sidebarIcon.addEventListener('mouseleave', hideNav);
+</script>
+</body>
+
+</html>

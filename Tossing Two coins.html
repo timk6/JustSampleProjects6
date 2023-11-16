@@ -1,0 +1,40 @@
+<html>
+<head>
+  <script>
+        function tossCoin() {
+      var numOfCoins = prompt("Enter number of Coins:");
+      var numOfTosses = prompt("Enter number of Tosses:");
+      var table = document.getElementById("tossesTable");
+      var outcomes = ["v1", "v2"];
+      var allOutcomes = [];
+      var currentOutcome = "";
+      function getOutcomes(num, outcome) {
+        if (num === 0) {
+          allOutcomes.push(outcome);
+          return;
+        }
+        for (let i = 0; i < outcomes.length; i++) {
+          getOutcomes(num - 1, outcome + outcomes[i]);
+        }
+      }
+      getOutcomes(numOfCoins * numOfTosses, currentOutcome);
+      for (var i = 0; i < allOutcomes.length; i++) {
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = "Outcome " + (i+1);
+        cell2.innerHTML = allOutcomes[i];
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <button onclick="tossCoin()">Toss Coin</button>
+  <table id="tossesTable">
+    <tr>
+      <th>OutCome Result</th>
+    </tr>
+  </table>
+</body>
+</html>

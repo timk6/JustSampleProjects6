@@ -1,0 +1,293 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>WebP Viewer</title>
+    <style>
+    #webp-image {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+      #counter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: rgb(102, 102, 0);">WebP Viewer</h1>
+    <input type="file" id="webp-files" multiple>
+	
+     <p> <button id="view-button" onclick="startViewing()" disabled>View</button> </p>
+   <p> <button id="stop-button" onclick="stopViewing()" disabled>Stop</button> </p>
+    <p> <button id="save-button" onclick="saveFiles()" disabled>Save</button></p>
+	
+    <br>
+    <img id="webp-image">
+    <div id="counter"></div>
+    <script>
+      let fileInput = document.getElementById("webp-files");
+      let viewButton = document.getElementById("view-button");
+      let stopButton = document.getElementById("stop-button");
+      let saveButton = document.getElementById("save-button");
+      let webpImage = document.getElementById("webp-image");
+      let currentFile = 0;
+      let intervalId;
+      let counter = document.getElementById("counter");
+      
+      fileInput.onchange = function() {
+        viewButton.disabled = false;
+        saveButton.disabled = false;
+      }
+      
+      function startViewing() {
+        let files = fileInput.files;
+        webpImage.style.display = "block";
+        webpImage.src = URL.createObjectURL(files[currentFile]);
+        counter.innerHTML = (currentFile + 1) + " / " + files.length;
+        currentFile++;
+        stopButton.disabled = false;
+        viewButton.disabled = true;
+        intervalId = setInterval(function(){ 
+            if (currentFile === files.length) {
+                currentFile = 0;
+            }
+            webpImage.src = URL.createObjectURL(files[currentFile]);
+            counter.innerHTML = (currentFile + 1) + " / " + files.length;
+            currentFile++;
+        }, 2000);
+      }
+
+      function stopViewing() {
+        clearInterval(intervalId);
+        stopButton.disabled = true;
+        viewButton.disabled = false;
+      }
+ function saveFiles() {                                            
+        let files = fileInput.files;
+        let blob = new Blob(files, {type: 'video/mp4'});
+        let url = window.URL.createObjectURL(blob);        
+		let a = document.createElement('a');
+        a.href = url;
+a.download = "mergedWebp.mp4";
+a.style.display = 'none';
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+clearInterval(intervalId);
+stopButton.disabled = true;
+viewButton.disabled = false;
+}
+</script>
+
+  </body>
+  
+  <head>
+  <meta charset="UTF-8">
+  <title>Screen Recorder</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    #box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 3px dashed red;
+      display: none;
+    }
+    
+    #record-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+ <button style="top: 218px; left: 0px;" id="record-btn">Record</button>
+ <p>  <button 
+style="background-color: lightblue; font-weight: bold; color: black;"
+onclick="window.location.href='https://online-video-cutter.com/crop-video';">
+CROP
+</button>  </p>
+  
+  <script>
+    const box = document.getElementById('box');
+    let isDragging = false;
+    let start = {x: 0, y: 0};
+    let end = {x: 0, y: 0};
+
+    document.addEventListener('mousedown', e => {
+      if (!isDragging) {
+        start.x = e.clientX;
+        start.y = e.clientY;
+        end.x = e.clientX;
+        end.y = e.clientY;
+        box.style.width = '0px';
+        box.style.height = '0px';
+        box.style.display = 'block';
+      }
+    });
+
+    document.addEventListener('mousemove', e => {
+      if (isDragging) {
+        end.x = e.clientX;
+        end.y = e.clientY;
+        box.style.width = Math.abs(start.x - end.x) + 'px';
+        box.style.height = Math.abs(start.y - end.y) + 'px';
+        box.style.top = Math.min(start.y, end.y) + 'px';
+        box.style.left = Math.min(start.x, end.x) + 'px';
+      }
+    });
+
+    document.addEventListener('mouseup', e => {
+      isDragging = false;
+
+      // show record button
+      recordBtn.style.display = 'block';
+
+      // set up recording stream with selected dimensions
+      const stream = document.getElementById('screen').captureStream();
+      const recordingStream = new MediaStream();
+      const videoTrack = stream.getVideoTracks()[0];
+      const recordingTrack = videoTrack.clone();
+      recordingTrack.applyConstraints({
+  width: recordingWidth,
+  height: recordingHeight,
+  crop: {left: recordingX, top: recordingHeight, width: recordingWidth, height: recordingHeight}
+});
+
+      recordingStream.addTrack(recordingTrack);
+
+      // start recording
+      mediaRecorder = new MediaRecorder(recordingStream, {mimeType: 'video/webm'});
+      mediaRecorder.start();
+
+      // stop recording after 10 seconds
+      setTimeout(() => {
+        mediaRecorder.stop();
+        videoPreview.srcObject = null;
+      }, 10000);
+    });
+
+    const recordBtn = document.getElementById('record-btn');
+    recordBtn.addEventListener('click', () => {
+      if (isDragging) {
+        // stop recording
+        return;
+      }
+      box.style.display = 'block';
+      recordBtn.innerText = 'Stop';
+      recordBtn.style.backgroundColor = 'red';
+      recordBtn.style.color = 'white';
+      navigator.mediaDevices.getDisplayMedia({
+        video: {
+          cursor: 'always'
+        },
+        audio: false
+      }).then(stream => {
+        const mediaRecorder = new MediaRecorder(stream);
+        const chunks = [];
+        mediaRecorder
+		
+		.ondataavailable = e => {
+chunks.push(e.data);
+};
+mediaRecorder.onstop = e => {
+const blob = new Blob(chunks, {type: 'video/mp4'});
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'screen-record.mp4';
+a.click();
+URL.revokeObjectURL(url);
+recordBtn.innerText = 'Record';
+recordBtn.style.backgroundColor = '#333';
+recordBtn.style.color = 'white';
+isDragging = false;
+box.style.display = 'none';
+};
+mediaRecorder.start();
+isDragging = true;
+start.x = box.offsetLeft;
+start.y = box.offsetTop;
+end.x = box.offsetLeft + box.offsetWidth;
+end.y = box.offsetTop + box.offsetHeight;
+box.style.display = 'none';
+stream.getTracks().forEach(track => {
+const constraints = track.getConstraints();
+track.applyConstraints({
+...constraints,
+width: end.x- start.x,
+height: end.y - start.y,
+displaySurface: 'monitor',
+logicalSurface: true,
+cursor: 'always'
+});
+});
+
+    // set up recording stream with selected dimensions
+    const recordingStream = new MediaStream();
+    const videoTrack = stream.getVideoTracks()[0];
+    const recordingTrack = videoTrack.clone();
+    recordingTrack.applyConstraints({
+      width: end.x - start.x,
+      height: end.y- start.y,
+      displaySurface: 'monitor',
+      logicalSurface: true,
+      cursor: 'always'
+    });
+    recordingStream.addTrack(recordingTrack);
+
+    // show record button
+    recordBtn.style.display = 'block';
+
+    // record button functionality
+    recordBtn.addEventListener('click', () => {
+      // hide record button
+      recordBtn.style.display = 'none';
+
+      // start recording
+      const chunks = [];
+      const mediaRecorder = new MediaRecorder(recordingStream);
+      mediaRecorder.ondataavailable = e => {
+        chunks.push(e.data);
+      };
+      mediaRecorder.onstop = e => {
+        const blob = new Blob(chunks, {type: 'video/mp4'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'screen-record.mp4';
+        a.click();
+        URL.revokeObjectURL(url);
+        isDragging = false;
+        box.style.display = 'none';
+      };
+      mediaRecorder.start();
+      isDragging = true;
+    });
+
+  }).catch(err => {
+    console.error(err);
+  });
+});
+</script>
+</body>
+
+</html>

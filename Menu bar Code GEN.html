@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        table {
+            width: 70%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .enter-column {
+            background-color: #f8f8f8;
+            width: 20%;
+            text-align: center;
+        }
+
+        #result {
+            width: 70%;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        #copyButton {
+            float:;
+        }
+    </style>
+    
+    
+    
+    <!-- yyhhhhhh -->
+    
+    
+    
+    <script>
+        function captureData() {
+            var enterW = document.getElementById("enterW").value.trim();
+			
+			var enterM1 = document.getElementById("enterM1").value.trim();
+            var enterMs11 = document.getElementById("enterMs11").value.trim();
+			var enterMs12 = document.getElementById("enterMs12").value.trim();
+			var enterMs13 = document.getElementById("enterMs13").value.trim();
+			var enterMs14 = document.getElementById("enterMs14").value.trim();
+			var enterMs15 = document.getElementById("enterMs15").value.trim();
+			var enterMs16 = document.getElementById("enterMs16").value.trim();
+			var enterMs17 = document.getElementById("enterMs17").value.trim();
+			var enterMs18 = document.getElementById("enterMs18").value.trim();
+			
+			
+			var enterMs21 = document.getElementById("enterMs21").value.trim();
+			var enterMs22 = document.getElementById("enterMs22").value.trim();
+			var enterMs23 = document.getElementById("enterMs23").value.trim();
+			var enterMs24 = document.getElementById("enterMs24").value.trim();
+			var enterMs25 = document.getElementById("enterMs25").value.trim();
+			var enterMs26 = document.getElementById("enterMs26").value.trim();
+			var enterMs27 = document.getElementById("enterMs27").value.trim();
+			var enterMs28 = document.getElementById("enterMs28").value.trim();
+			
+			var enterMs31 = document.getElementById("enterMs31").value.trim();
+			var enterMs32 = document.getElementById("enterMs32").value.trim();
+			var enterMs33 = document.getElementById("enterMs33").value.trim();
+			var enterMs34 = document.getElementById("enterMs34").value.trim();
+			var enterMs35 = document.getElementById("enterMs35").value.trim();
+			var enterMs36 = document.getElementById("enterMs36").value.trim();
+			var enterMs37 = document.getElementById("enterMs37").value.trim();
+			var enterMs38 = document.getElementById("enterMs38").value.trim();
+			
+			var enterMs41 = document.getElementById("enterMs41").value.trim();
+			var enterMs42 = document.getElementById("enterMs42").value.trim();
+			var enterMs43 = document.getElementById("enterMs43").value.trim();
+			var enterMs44 = document.getElementById("enterMs44").value.trim();
+			var enterMs45 = document.getElementById("enterMs45").value.trim();
+			var enterMs46 = document.getElementById("enterMs46").value.trim();
+			var enterMs47 = document.getElementById("enterMs47").value.trim();
+			var enterMs48 = document.getElementById("enterMs48").value.trim();
+			
+			var enterMs50 = document.getElementById("enterMs50").value.trim();
+			var enterMs51 = document.getElementById("enterMs51").value.trim();
+			var enterMs53 = document.getElementById("enterMs53").value.trim();
+			var enterMs54 = document.getElementById("enterMs54").value.trim();
+			var enterMs55 = document.getElementById("enterMs55").value.trim();
+			var enterMs56 = document.getElementById("enterMs56").value.trim();
+			var enterMs57 = document.getElementById("enterMs57").value.trim();
+			var enterMs58 = document.getElementById("enterMs58").value.trim();
+			
+			var enterMs61 = document.getElementById("enterMs61").value.trim();
+			var enterMs52 = document.getElementById("enterMs62").value.trim();
+			var enterMs63 = document.getElementById("enterMs63").value.trim();
+			var enterMs64 = document.getElementById("enterMs64").value.trim();
+			var enterMs65 = document.getElementById("enterMs65").value.trim();
+			var enterMs66 = document.getElementById("enterMs66").value.trim();
+			var enterMs67 = document.getElementById("enterMs67").value.trim();
+			var enterMs68 = document.getElementById("enterMs68").value.trim();
+			
+			var enterMs71 = document.getElementById("enterMs71").value.trim();
+			var enterMs72 = document.getElementById("enterMs72").value.trim();
+			var enterMs73 = document.getElementById("enterMs73").value.trim();
+			var enterMs74 = document.getElementById("enterMs74").value.trim();
+			var enterMs75 = document.getElementById("enterMs75").value.trim();
+			var enterMs76 = document.getElementById("enterMs76").value.trim();
+			var enterMs77 = document.getElementById("enterMs77").value.trim();
+			var enterMs78 = document.getElementById("enterMs78").value.trim();
+			
+			var enterMs81 = document.getElementById("enterMs81").value.trim();
+			var enterMs82 = document.getElementById("enterMs82").value.trim();
+			var enterMs83 = document.getElementById("enterMs83").value.trim();
+			var enterMs84 = document.getElementById("enterMs84").value.trim();
+			var enterMs85 = document.getElementById("enterMs85").value.trim();
+			var enterMs86 = document.getElementById("enterMs86").value.trim();
+			var enterMs87 = document.getElementById("enterMs87").value.trim();
+			var enterMs88 = document.getElementById("enterMs88").value.trim();
+			
+			var enterMs91 = document.getElementById("enterMs91").value.trim();
+			var enterMs92 = document.getElementById("enterMs92").value.trim();
+			var enterMs93 = document.getElementById("enterMs93").value.trim();
+			var enterMs94 = document.getElementById("enterMs94").value.trim();
+			var enterMs95 = document.getElementById("enterMs95").value.trim();
+			var enterMs96 = document.getElementById("enterMs96").value.trim();
+			var enterMs97 = document.getElementById("enterMs97").value.trim();
+			var enterMs98 = document.getElementById("enterMs98").value.trim();
+			
+			var enterMsx1 = document.getElementById("enterMsx1").value.trim();
+			var enterMsx2 = document.getElementById("enterMsx2").value.trim();
+			var enterMsx3 = document.getElementById("enterMsx3").value.trim();
+			var enterMsx4 = document.getElementById("enterMsx4").value.trim();
+			var enterMsx5 = document.getElementById("enterMsx5").value.trim();
+			var enterMsx6 = document.getElementById("enterMsx6").value.trim();
+			var enterMsx7 = document.getElementById("enterMsx7").value.trim();
+			var enterMsx8 = document.getElementById("enterMsx8").value.trim();
+			
+			var enterM2 = document.getElementById("enterM2").value.trim();
+			var enterM3 = document.getElementById("enterM3").value.trim();
+			var enterM4 = document.getElementById("enterM4").value.trim();
+			var enterM5 = document.getElementById("enterM5").value.trim();
+			var enterM6 = document.getElementById("enterM6").value.trim();
+			var enterM7 = document.getElementById("enterM7").value.trim();
+			var enterM8 = document.getElementById("enterM8").value.trim();
+			var enterM9 = document.getElementById("enterM9").value.trim();
+			var enterM10 = document.getElementById("enterM10").value.trim();
+			
+			
+		    var enterM1x = document.getElementById("enterM1x").value.trim();
+			var enterMs11x = document.getElementById("enterMs11x").value.trim();
+			var enterMs12x = document.getElementById("enterMs12x").value.trim();
+			var enterMs13x = document.getElementById("enterMs13x").value.trim();
+			var enterMs14x = document.getElementById("enterMs14x").value.trim();
+			var enterMs15x= document.getElementById("enterMs15x").value.trim();
+			var enterMs16x = document.getElementById("enterMs16x").value.trim();
+			var enterMs17x = document.getElementById("enterMs17x").value.trim();
+			var enterMs18x = document.getElementById("enterMs18x").value.trim();
+			
+			var enterMs21x = document.getElementById("enterMs21x").value.trim();
+			var enterMs22x = document.getElementById("enterMs22x").value.trim();
+			var enterMs23x = document.getElementById("enterMs23x").value.trim();
+			var enterMs24x = document.getElementById("enterMs24x").value.trim();
+			var enterMs25x = document.getElementById("enterMs25x").value.trim();
+			var enterMs26x = document.getElementById("enterMs26x").value.trim();
+			var enterMs27x = document.getElementById("enterMs27x").value.trim();
+			var enterMs28x = document.getElementById("enterMs28x").value.trim();
+			
+			var enterMs31x = document.getElementById("enterMs31x").value.trim();
+			var enterMs32x = document.getElementById("enterMs32x").value.trim();
+			var enterMs33x = document.getElementById("enterMs33x").value.trim();
+			var enterMs34x = document.getElementById("enterMs34x").value.trim();
+			var enterMs35x = document.getElementById("enterMs35x").value.trim();
+			var enterMs36x = document.getElementById("enterMs36x").value.trim();
+			var enterMs37x = document.getElementById("enterMs37x").value.trim();
+			var enterMs38x = document.getElementById("enterMs38x").value.trim();
+			
+			var enterMs41x = document.getElementById("enterMs41x").value.trim();
+			var enterMs42x = document.getElementById("enterMs42x").value.trim();
+			var enterMs43x = document.getElementById("enterMs43x").value.trim();
+			var enterMs44x = document.getElementById("enterMs44x").value.trim();
+			var enterMs45x = document.getElementById("enterMs45x").value.trim();
+			var enterMs46x = document.getElementById("enterMs46x").value.trim();
+			var enterMs47x = document.getElementById("enterMs47x").value.trim();
+			var enterMs48x = document.getElementById("enterMs48x").value.trim();
+			
+			var enterMs51x = document.getElementById("enterMs51x").value.trim();
+			var enterMs52x = document.getElementById("enterMs52x").value.trim();
+			var enterMs53x = document.getElementById("enterMs53x").value.trim();
+			var enterMs54x = document.getElementById("enterMs54x").value.trim();
+			var enterMs55x = document.getElementById("enterMs55x").value.trim();
+			var enterMs56x = document.getElementById("enterMs56x").value.trim();
+			var enterMs57x = document.getElementById("enterMs57x").value.trim();
+			var enterMs58x = document.getElementById("enterMs58x").value.trim();
+			
+			var enterMs61x = document.getElementById("enterMs61x").value.trim();
+			var enterMs52x = document.getElementById("enterMs62x").value.trim();
+			var enterMs63x = document.getElementById("enterMs63x").value.trim();
+			var enterMs64x = document.getElementById("enterMs64x").value.trim();
+			var enterMs65x = document.getElementById("enterMs65x").value.trim();
+			var enterMs66x = document.getElementById("enterMs66x").value.trim();
+			var enterMs67x = document.getElementById("enterMs67x").value.trim();
+			var enterMs68x = document.getElementById("enterMs68x").value.trim();
+			
+			var enterMs71x = document.getElementById("enterMs71x").value.trim();
+			var enterMs72x = document.getElementById("enterMs72x").value.trim();
+			var enterMs73x = document.getElementById("enterMs73x").value.trim();
+			var enterMs74x = document.getElementById("enterMs74x").value.trim();
+			var enterMs75x = document.getElementById("enterMs75x").value.trim();
+			var enterMs76x = document.getElementById("enterMs76x").value.trim();
+			var enterMs77x = document.getElementById("enterMs77x").value.trim();
+			var enterMs78x = document.getElementById("enterMs78x").value.trim();
+			
+			var enterMs81x = document.getElementById("enterMs81x").value.trim();
+			var enterMs82x = document.getElementById("enterMs82x").value.trim();
+			var enterMs83x = document.getElementById("enterMs83x").value.trim();
+			var enterMs84x = document.getElementById("enterMs84x").value.trim();
+			var enterMs85x = document.getElementById("enterMs85x").value.trim();
+			var enterMs86x = document.getElementById("enterMs86x").value.trim();
+			var enterMs87x = document.getElementById("enterMs87x").value.trim();
+			var enterMs88x = document.getElementById("enterMs88x").value.trim();
+			
+			var enterMs91x = document.getElementById("enterMs91x").value.trim();
+			var enterMs92x = document.getElementById("enterMs92x").value.trim();
+			var enterMs93x = document.getElementById("enterMs93x").value.trim();
+			var enterMs94x = document.getElementById("enterMs94x").value.trim();
+			var enterMs95x = document.getElementById("enterMs95x").value.trim();
+			var enterMs96x = document.getElementById("enterMs96x").value.trim();
+			var enterMs97x = document.getElementById("enterMs97x").value.trim();
+			var enterMs98x = document.getElementById("enterMs98x").value.trim();
+			
+			var enterMsx1x = document.getElementById("enterMsx1x").value.trim();
+			var enterMsx2x = document.getElementById("enterMsx2x").value.trim();
+			var enterMsx3x = document.getElementById("enterMsx3x").value.trim();
+			var enterMsx4x = document.getElementById("enterMsx4x").value.trim();
+			var enterMsx5x = document.getElementById("enterMsx5x").value.trim();
+			var enterMsx6x = document.getElementById("enterMsx6x").value.trim();
+			var enterMsx7x = document.getElementById("enterMsx7x").value.trim();
+			var enterMsx8x = document.getElementById("enterMsx8x").value.trim();
+			
+			var enterM2x = document.getElementById("enterM2x").value.trim();
+			var enterM3x = document.getElementById("enterM3x").value.trim();
+			var enterM4x = document.getElementById("enterM4x").value.trim();
+			var enterM5x = document.getElementById("enterM5x").value.trim();
+			var enterM6x = document.getElementById("enterM6x").value.trim();
+			var enterM7x = document.getElementById("enterM7x").value.trim();
+			var enterM8x = document.getElementById("enterM8x").value.trim();
+			var enterM9x = document.getElementById("enterM9x").value.trim();
+			var enterM10x = document.getElementById("enterM10x").value.trim();
+			
+			
+            
+			
+            
+			
+			
+			
+
+     
+			
+			
+			
+			
+			
+
+            var data = [];
+			
+			
+		
+            var itemq1 ="#Global iWindow_0.i " ;data.push(itemq1);			
+            var itemq2 ="#Global iMainMenu.i" ;data.push(itemq2);
+			var itemq2 ="#Global iToolBar.i" ;data.push(itemq2);
+		  
+		     var itemq2 ="#UsePNGImageDecoder()" ;data.push(itemq2);
+			 var itemq2 ="#Define iEvent.i" ;data.push(itemq2);
+			 
+		     var itemq2 ="Declare Open_Window_0(X = 0, Y = 0, width = 900, height = 700)" ;data.push(itemq2);
+			var itemq2 ="#Global iToolBar.i" ;data.push(itemq2);
+		
+			
+			
+			
+			
+			
+			
+			
+									
+			
+			
+            var result = document.getElementById("result");
+            result.value = data.join("\n");
+
+            // Adjust textarea size based on number of lines
+            var lines = result.value.split("\n").length;
+            result.rows = lines;
+        }
+
+        function copyText() {
+            var result = document.getElementById("result");
+            result.select();
+            document.execCommand("copy");
+
+            // Update the button text
+            var copyButton = document.getElementById("copyButton");
+            copyButton.textContent = "Copied!";
+            setTimeout(function() {
+                copyButton.textContent = "Copy";
+            }, 2000);
+        }
+
+        function captureAgain() {
+            // Capture the entered data again
+            captureData();
+        }
+    </script>
+	
+	
+	
+	<style>
+	* {
+		box-sizing: border-box;
+	}
+	/* Set additional styling options for the columns */
+	
+	.column {
+		float: left;
+		width: 10%;
+	}
+	
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	</style>
+</head>
+ <h1>SET CODE FROM PB TO HTML VarItem & data push</h1>
+    <table>
+	
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th class="enter-column"> <big><big><span style="color: rgb(0, 0, 153); font-weight: bold;">Enter</span></big></big></th>
+        </tr>
+		
+        <tr>
+            <td>  <big><big><span style="color: rgb(0, 0, 153); font-weight: bold;">Window<sup>&#10033</sup></span></big></big  </td>
+            <td>window name where menu is to be attached to</td>
+            <td class="enter-column"><input type="text" id="enterW"></td>
+        </tr>
+		
+		
+		
+    </table>
+
+<body>
+A Menu Item IS Entered in the first place, its respective sub/sub sub menues follow. COLUMN 6 is used only for items with sub sub menus.
+    <div class="row">
+        <div class="column">
+            <h2></h2>
+			
+   <p>		
+   
+<td class="enter-column">
+  <input id="enterM1" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs11" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs12" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs13" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs14" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs15" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs16" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs17" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs18" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+
+</td>
+
+</p>
+
+ </div>
+ <div class="column">
+<h2></h2>
+ <p>
+ <input id="enterM2" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs21" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs22" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs23" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs24" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs25" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs26" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs27" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs28" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+  
+  </p>
+			
+			
+			
+</div>
+		
+		
+<div class="column">
+<h2></h2>
+<p>
+
+ <input id="enterM3" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs31" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs32" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs33" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs34" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs35" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs36" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs37" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs38" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+</p>
+</div>
+
+
+<div class="column">
+<h2></h2>
+<p>
+ <input id="enterM4" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs41" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs42" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs43" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs44" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs45" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs46" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs47" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs48" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+  
+
+
+</p>
+</div>
+        
+		
+		
+<div class="column">
+<h2></h2>
+<p>
+ <input id="enterM5" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs50" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+    <input id="enterMs51" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+
+ <input id="enterMs53" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs54" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs55" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs56" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs57" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs58" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+  
+
+</p>
+</div>
+
+<div class="column">
+<h2></h2>
+ <p>
+ 
+  <input id="enterM6" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu COLUMN is">
+  <input id="enterMs61" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="submenu RESERVED ">
+  <input id="enterMs62" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.s.menu THOSE ">
+ <input id="enterMs63" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.s.menu FOR">
+  <input id="enterMs64" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.S menuI ITEMS ">
+ <input id="enterMs65" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.S menu THAT HAVE">
+  <input id="enterMs66" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub sub menu">
+ <input id="enterMs67" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub sub menu ">
+  <input id="enterMs68" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub sub menu">
+  
+  
+ 
+ </p>
+ </div>
+ 
+ <div class="column">
+ <h2></h2>
+<p>
+<input id="enterM7" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs71" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs72" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs73" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs74" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs75" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs76" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs77" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs78" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ 
+</p>
+ </div>
+ <div class="column">
+ 
+ <h2></h2>
+ <p>
+ 
+ <input id="enterM8" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs81" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs82" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs83" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs84" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs85" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs86" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs87" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs88" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+ 
+ </p>
+ </div>
+ <div class="column">
+ 
+ 
+ <h2></h2>
+ <p>
+ 
+ <input id="enterM9" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs91" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs92" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs93" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs94" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs95" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs96" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs97" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs98" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+ </p>
+ </div>
+ <div class="column">
+ 
+<h2></h2>
+<p>
+<input id="enterM10" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMsx1" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx2" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMsx3" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx4" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMsx5" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx6" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMsx7" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx8" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+
+
+</p>
+			
+			
+			
+			
+			
+        </div>
+    </div>
+</body>
+Now Enter commands/prompts REPECTIVELY for the above sub/sub sub menu. Igore where not necessary
+<body>
+
+    <div class="row">
+        <div class="column">
+            <h2></h2>
+			
+   <p>		
+   
+<td class="enter-column">
+  <input id="enterM1x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs11x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs12x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs13x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs14x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs15x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs16x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs17x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs18x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+
+</td>
+
+</p>
+
+ </div>
+ <div class="column">
+<h2></h2>
+ <p>
+ <input id="enterM2x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs21x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs22x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs23x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs24x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs25x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs26x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs27x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs28x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+  
+  </p>
+			
+			
+			
+</div>
+		
+		
+<div class="column">
+<h2></h2>
+<p>
+
+ <input id="enterM3x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs31x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs32x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs33x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs34x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs35x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs36x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs37x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs38x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+</p>
+</div>
+
+
+<div class="column">
+<h2></h2>
+<p>
+ <input id="enterM4x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs41x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs42x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs43x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs44x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs45x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs46x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs47x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs48x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+  
+
+
+</p>
+</div>
+        
+		
+		
+<div class="column">
+<h2></h2>
+<p>
+ <input id="enterM5x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs51x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs52x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs53x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs54x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs55x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs56x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs57x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs58x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+  
+
+</p>
+</div>
+
+<div class="column">
+<h2></h2>
+ <p>
+ 
+  <input id="enterM6x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu COLUMN is">
+  <input id="enterMs61x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="submenu RESERVED ">
+  <input id="enterMs62x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.s.menu THOSE ">
+ <input id="enterMs63x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.s.menu FOR">
+  <input id="enterMs64x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.S menuI ITEMS ">
+ <input id="enterMs65x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" s.S menu THAT HAVE">
+  <input id="enterMs66x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub sub menu">
+ <input id="enterMs67x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub sub menu ">
+  <input id="enterMs68x" type="text" oninput="document.getElementById('sub sub memu item').style.display = document.getElementById('sub sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub sub menu">
+  
+  
+ 
+ </p>
+ </div>
+ 
+ <div class="column">
+ <h2></h2>
+<p>
+<input id="enterM7x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs71x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs72x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs73x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs74x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs75x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs76x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs77x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs78x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ 
+</p>
+ </div>
+ <div class="column">
+ 
+ <h2></h2>
+ <p>
+ 
+ <input id="enterM8x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs81x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs82x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs83x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs84x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs85x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs86x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs87x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs88x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+ 
+ </p>
+ </div>
+ <div class="column">
+ 
+ 
+ <h2></h2>
+ <p>
+ 
+ <input id="enterM9x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMs91x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs92x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs93x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs94x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs95x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs96x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMs97x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMs98x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+ </p>
+ </div>
+ <div class="column">
+ 
+<h2></h2>
+<p>
+<input id="enterM10x" type="text" oninput="document.getElementById('memu item').style.display = document.getElementById('menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder="menu item">
+  <input id="enterMsx1x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx2x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMsx3x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx4x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMsx5x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx6x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+ <input id="enterMsx7x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  <input id="enterMsx8x" type="text" oninput="document.getElementById('sub memu item').style.display = document.getElementById('sub menu item').style.display = this.value ? 'table-cell' : 'none'" placeholder=" sub menu item">
+  
+
+
+</p>
+			
+			
+			
+			
+			
+        </div>
+    </div>
+</body>
+
+
+
+
+<button style="background-color: lightblue; font-weight: bold; color: black;" id="copyButton" onclick="copyText()">Copy</button>
+	
+<button style="background-color: lightblue; font-weight: bold; color: black;" onclick="captureData()">Generate Code</button>
+	
+	
+	
+ 
+    <div>
+        <textarea id="result" readonly></textarea>
+       
+    
+    </div>
+</html>

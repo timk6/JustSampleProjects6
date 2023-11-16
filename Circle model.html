@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Circle Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        #canvas {
+            border: 1px solid black;
+            margin: 20px;
+        }
+        #controls {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        #controls label {
+            margin-right: 5px;
+        }
+        #equation {
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        #container {
+            display: flex;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Circle Selection</h1>
+    <div id="container">
+        <div>
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+        <div>
+            <div id="controls">
+                <label for="radius">Radius:</label>
+                <input type="number" id="radius" value="50" min="1" max="200" step="1">
+            </div>
+            <div id="controls">
+                <label for="centerX">Center X:</label>
+                <input type="number" id="centerX" value="150" min="0" max="400" step="1">
+            </div>
+            <div id="controls">
+                <label for="centerY">Center Y:</label>
+                <input type="number" id="centerY" value="150" min="0" max="400" step="1">
+            </div>
+            <div>
+                <textarea id="equation" rows="2" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the canvas and context
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Variables to keep track of circle properties
+        let radius = parseInt(document.getElementById('radius').value);
+        let centerX = parseInt(document.getElementById('centerX').value);
+        let centerY = parseInt(document.getElementById('centerY').value);
+
+        // Variable to track if the circle is selected and double-selected
+        let isSelected = false;
+        let isDoubleSelected = false;
+
+        // Function to draw the circle based on the provided parameters
+        function drawCircle() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            if (isSelected) {
+                const squareSize = radius * 2;
+                const squareX = centerX - radius;
+                const squareY = centerY - radius;
+                ctx.strokeRect(squareX, squareY, squareSize, squareSize);
+            }
+
+            // Update the details
+            document.getElementById('radius').value = radius;
+            document.getElementById('centerX').value = centerX;
+            document.getElementById('centerY').value = centerY;
+
+            // Update the equation text area
+            document.getElementById('equation').value = `Circle: (x - ${centerX})^2 + (y - ${centerY})^2 = ${radius ** 2}`;
+        }
+
+        // Function to update the circle properties based on square position and size
+        function updateCircleProperties(squareX, squareY, squareSize) {
+            centerX = squareX + squareSize / 2;
+            centerY = squareY + squareSize / 2;
+            radius = squareSize / 2;
+
+            drawCircle();
+        }
+
+        // Function to handle mouse double-click event for selecting and deselecting the circle
+        function handleDoubleClick(event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            // Check if the mouse click is inside the square enclosing the circle
+            const squareSize = radius * 2;
+            const squareX = centerX - radius;
+            const squareY = centerY - radius;
+
+            if (mouseX >= squareX && mouseX <= squareX + squareSize &&
+                mouseY >= squareY && mouseY <= squareY + squareSize) {
+                if (isDoubleSelected) {
+                    isSelected = false;
+                    isDoubleSelected = false;
+                } else {
+                    isDoubleSelected = true;
+                }
+            } else {
+                isSelected = false;
+                isDoubleSelected = false;
+            }
+
+            drawCircle();
+        }
+
+        // Function to handle mouse down event for dragging or radius adjustment
+        function handleMouseDown(event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            // Check if the mouse click is inside the circle
+            const distance = Math.sqrt((mouseX - centerX) ** 2 + (mouseY - centerY) ** 2);
+            if (distance <= radius) {
+                if (isDoubleSelected) {
+                    // Allow radius adjustment for double-selected circle
+                    const squareSize = radius * 2;
+                    const squareX = centerX - radius;
+                    const squareY = centerY - radius;
+                    canvas.addEventListener('mousemove', handleMouseMove);
+                    canvas.addEventListener('mouseup', handleMouseUp);
+                } else {
+                    // Drag the circle for single-selected circle
+                    canvas.addEventListener('mousemove', handleDragMove);
+                    canvas.addEventListener('mouseup', handleDragUp);
+                }
+            }
+        }
+
+        // Function to handle mouse move event for dragging the circle
+        function handleDragMove(event) {
+            const rect = canvas.getBoundingClientRect();
+            centerX = event.clientX - rect.left;
+            centerY = event.clientY - rect.top;
+            drawCircle();
+        }
+
+        // Function to handle mouse up event for dragging the circle
+        function handleDragUp() {
+            canvas.removeEventListener('mousemove', handleDragMove);
+            canvas.removeEventListener('mouseup', handleDragUp);
+            drawCircle();
+        }
+
+        // Function to handle mouse move event for adjusting the radius
+        function handleMouseMove(event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            const squareSize = Math.max(Math.abs(mouseX - centerX), Math.abs(mouseY - centerY)) * 2;
+            const squareX = centerX - squareSize / 2;
+            const squareY = centerY - squareSize / 2;
+
+            updateCircleProperties(squareX, squareY, squareSize);
+        }
+
+        // Function to handle mouse up event for adjusting the radius
+        function handleMouseUp() {
+            canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mouseup', handleMouseUp);
+            drawCircle();
+        }
+
+        // Add event listener for double-click event on the canvas
+        canvas.addEventListener('dblclick', handleDoubleClick);
+
+        // Add event listener for mouse down event on the canvas
+        canvas.addEventListener('mousedown', handleMouseDown);
+
+        // Initial draw
+        drawCircle();
+    </script>
+</body>
+</html>

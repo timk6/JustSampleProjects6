@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas and Button</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #canvasContainer {
+            position: relative;
+            width: 500px;
+            height: 300px;
+        }
+        canvas {
+            border: 1px solid black;
+            display: block;
+        }
+        .generateButton {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #generateButton {
+            /* Move the original "GENERATE" button down slightly to create space */
+            top: 60%;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvasContainer">
+        <canvas id='canvas' width="500" height="300"></canvas>
+    </div>
+    <button id="generateButton" class="generateButton">GENERATE</button>
+    <button id="generateOriginalButton" class="generateButton">GENERATE ORIGINAL</button>
+
+    <!-- Second JavaScript script labeled as "Script 2" -->
+    <script>
+        function generateRandomColor() {
+            // Generate random RGB values between 0 and 255
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        }
+
+        var originalScriptContent; // Variable to store the original script content
+
+        document.getElementById("generateOriginalButton").addEventListener("click", function () {
+            // Restore the original script content
+            eval(originalScriptContent);
+        });
+
+        document.getElementById("generateButton").addEventListener("click", function () {
+            // Get the canvas and its context
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+
+            // Get the text content of the script element with label "Script 1" and replace the RGB value
+            var script1 = document.querySelector("script[label='Script 1']");
+            var script1Content = script1.textContent;
+
+            if (!originalScriptContent) {
+                originalScriptContent = script1Content; // Store the original content only once
+            }
+
+            var updatedContent = script1Content.replace(/ctx\.fillStyle\s*=\s*'rgb\(\d+,\s*\d+,\s*\d+\)'/i, "ctx.fillStyle = '" + generateRandomColor() + "'");
+
+            // Execute the updated script content
+            eval(updatedContent);
+        });
+    </script>
+
+    <!-- First JavaScript script labeled as "Script 1" -->
+    <script src="path/to/script1.js" label="Script 1">
+            var ctx = document.getElementById("canvas").getContext("2d");
+    	
+// #layer1
+	
+// #path1519
+	ctx.beginPath();
+	
+	ctx.lineWidth = 0.070004;
+	ctx.moveTo(69.547623, 71.059523);
+	ctx.bezierCurveTo(83.742656, 71.059523, 95.250004, 82.228419, 95.250004, 96.005951);
+	ctx.bezierCurveTo(95.250004, 109.783483, 83.742656, 120.952379, 69.547623, 120.952379);
+	ctx.bezierCurveTo(55.352590, 120.952379, 43.845242, 109.783483, 43.845242, 96.005951);
+	ctx.bezierCurveTo(43.845242, 82.228419, 55.352590, 71.059523, 69.547623, 71.059523);
+	ctx.fill();
+	
+// #rect1521
+	ctx.beginPath();
+	ctx.fillStyle = 'rgb(0, 0, 255)';
+	ctx.lineWidth = 0.070004;
+	ctx.rect(49.892857, 149.678570, 73.327377, 45.357143);
+	ctx.fill();
+    </script>
+</body>
+</html>
